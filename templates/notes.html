@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <title>Notes</title>
+</head>
+
+<body class="bg-dark text-white" style="overflow-x: hidden;">
+    {% if messages %}
+    {% for msg in messages %}
+    <div class="alert alert-{{msg.tags}} text-center">
+        <h1>{{msg}}</h1>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <h1 class="text-center">Notes</h1>
+    <br>
+    <div style="width: 100vw; margin-left: 25vw;">
+        {% for i in showNotes %}
+        <div class="card bg-danger w-50">
+            <div class="card-body">
+                <h5 class="card-title"><b class="text-dark" style="text-decoration: underline;">Note Title:</b>
+                    {{i.noteTitle}}</h5>
+                <p class="card-text"><b class="text-dark" style="text-decoration: underline;">Note Description:</b>
+                    {{i.noteDesc}}</p>
+            </div>
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+</body>
+<script src="{% static 'bootstrap.bundle.js' %}"></script>
+
+</html>
